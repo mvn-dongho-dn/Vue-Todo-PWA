@@ -52,7 +52,7 @@ export default {
   methods: {
     addTodo: function(e, id) {
       const value = e && e.trim();
-      this.todos.push({
+      this.todos.unshift({
         id: id,
         title: value,
         completed: false
@@ -99,7 +99,10 @@ export default {
           break;
         case 'toggle':
           this.toggle = !this.toggle;
-          // this.todos = this.originTodos.filter((e) => e.completed = this.toggle);
+          this.todos = this.originTodos = this.originTodos.map((e) => {
+            e.completed = this.toggle;
+            return e;
+          });
           break;
       }
     }
