@@ -47,6 +47,7 @@ export default {
   },
   mounted() {
     this.reactiveMess('all', this.todos);
+    this.originTodos = this.todos;
   },
   methods: {
     addTodo: function(e, id) {
