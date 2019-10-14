@@ -4,7 +4,7 @@
     <main class="page-main">
       <InputTodoComp ref="inputTodo" @add="addTodo" @toggle="actionTodo"/>
       <div class="todo-counter">
-        2 item left
+        {{todos.length}} {{todos.length ? 'items' : 'item'}} left
         <span v-if="toggleClear" @click="actionTodo('clear')">Clear completed</span>
       </div>
       <TodoListComp :todos="todos" />
@@ -107,7 +107,6 @@ export default {
     todos: {
       handler: function(todos) {
         todoLocalStorage.set(STORAGE_KEY, todos)
-        this.reactiveMess(this.currentFilter, this.todos);
         this.toggleClear = todos.some(e => e.completed);
         this.reactiveMess(this.currentFilter, todos);
       },
