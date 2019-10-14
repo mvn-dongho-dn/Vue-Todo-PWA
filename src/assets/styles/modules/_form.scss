@@ -1,0 +1,35 @@
+.checkbox-style {
+  cursor: pointer;
+  span {
+    width: 16px;
+    height: 16px;
+    border: 1px solid #333;
+    display: block;
+    border-radius: 3px;
+    transition: all .1s ease-in-out;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    &::before {
+      content: "";
+      width: 6px;
+      height: 6px;
+      background: #75c646;
+      border-radius: 50%;
+      transform: scale(0);
+      transition: all .4s;
+    }
+  }
+  input {
+    display: none;
+    &:checked {
+      + span {
+        border-color: map-get($colors, primary);
+        transform: rotate(45deg) !important;
+        &::before {
+          transform: scale(1);
+        }
+      }
+    }
+  }
+}

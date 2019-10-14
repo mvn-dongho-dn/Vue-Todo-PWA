@@ -1,9 +1,17 @@
 .logo {
-  font-size: 30px;
-  color: #face48;
-  text-shadow: 3px -1px 0 #000;
+  font-size: 33px;
+  // color: #74de32;
+  // text-shadow: 3px -1px 0 #000;
+  font-family: $font-title;
+  span {
+    color: map-get($colors, primary);
+    font-size: 34px;
+    line-height: 0;
+    display: inline-block;
+    margin: 0 2px;
+  }
 }
 .page-header {
-  padding: 17px 15px 15px;
+  padding: 13px 15px 16px;
   text-align: center;
 }
