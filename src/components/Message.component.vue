@@ -19,7 +19,7 @@ export default {
   },
   watch: {
     mess: {
-      handler: function(txt) {
+      handler: function() {
       }
     }
   }

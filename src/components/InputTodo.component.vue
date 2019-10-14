@@ -24,7 +24,9 @@ export default {
       this.$emit('toggle', 'toggle');
     },
     onNewTodo: function() {
-      this.$emit('add', this.newTodo, this.saveLocalNewId());
+      if (this.newTodo) {
+        this.$emit('add', this.newTodo.trim(), this.saveLocalNewId());
+      }
     },
     saveLocalNewId: function() {
       let getLastId = localStorage.getItem('lastTodoId');
