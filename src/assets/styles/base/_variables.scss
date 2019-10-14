@@ -1,3 +1,7 @@
+$font-body: 'Abel', sans-serif;
+// $font-title: 'HoboStd', sans-serif;
+$font-title: 'ElegantLux-Mager', sans-serif;
+
 // == Breakpoints ===
 $breakpoints: (
   small: 480px,
@@ -5,4 +9,8 @@ $breakpoints: (
   wide: 960px,
   large: 1024px,
   largest: 1280px
+);
+// == Colors ===
+$colors: (
+  primary: #5fbb25,
 );

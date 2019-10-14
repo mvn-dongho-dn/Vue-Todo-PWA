@@ -1,15 +1,22 @@
 <template>
   <ul class="todo-list">
-    <li class="todo-item" v-for="(todo, index) in todos" :key="index">
+    <li class="todo-item" v-for="(todo, index) in todos" :key="index" :class="{active: todo.completed}">
       <div class="todo-content" 
         @touchstart="handleTouchStart"
         @touchmove="handleTouchMove"
         @touchend="handleTouchEnd">
-        <input type="checkbox" v-model="todo.completed">
-        {{ todo.title }}
+        <label class="checkbox-style">
+          <input type="checkbox" v-model="todo.completed">
+          <span></span>
+        </label>
+        <p class="todo-txt">
+          <span>{{ todo.title }}</span>
+        </p>
       </div>
       <div class="todo-action">
-        <button @click="onDelete(todo)">x</button>
+        <button @click="onDelete(todo)">
+          <i class="iconim-trash"></i>
+        </button>
       </div>
     </li>
   </ul>  

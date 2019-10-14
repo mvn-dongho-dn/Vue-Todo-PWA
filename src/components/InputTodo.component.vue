@@ -1,5 +1,6 @@
 <template>
   <div class="input-todo">
+    <button class="toggle-all-todo" type="button" @click="toggleCompleted"></button>
     <input type="text" v-model="newTodo" @keyup.enter="onNewTodo()">
   </div>
 </template>
@@ -19,6 +20,9 @@ export default {
     }
   },
   methods: {
+    toggleCompleted: function() {
+      this.$emit('toggle', 'toggle');
+    },
     onNewTodo: function() {
       this.$emit('add', this.newTodo, this.saveLocalNewId());
     },
