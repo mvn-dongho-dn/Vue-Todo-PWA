@@ -1,11 +1,11 @@
 <template>
   <div id="app">
     <HeaderComp/>
-    <main class="page-main">
+    <main class="page-main" role="main">
       <InputTodoComp ref="inputTodo" @add="addTodo" @toggle="actionTodo"/>
       <div class="todo-counter">
         {{todos.length}} {{todos.length ? 'items' : 'item'}} left
-        <span v-if="toggleClear" @click="actionTodo('clear')">Clear completed</span>
+        <span v-if="toggleClear" @click="actionTodo('clear')" role="button">Clear completed</span>
       </div>
       <TodoListComp :todos="todos" />
 

@@ -1,7 +1,7 @@
 <template>
-  <div class="input-todo">
-    <button class="toggle-all-todo" type="button" @click="toggleCompleted"></button>
-    <input type="text" v-model="newTodo" @keyup.enter="onNewTodo()">
+  <div class="input-todo" role="form">
+    <button class="toggle-all-todo" type="button" @click="toggleCompleted" aria-label="Toggle Todo"></button>
+    <input type="text" v-model="newTodo" @keyup.enter="onNewTodo()" aria-label="Input Todo">
   </div>
 </template>
 
