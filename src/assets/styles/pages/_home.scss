@@ -113,12 +113,15 @@
   border: 0;
   background: none;
   width: 48px;
+  color: #e6e6e6;
   &::before {
     content: '\276F';
     font-size: 22px;
-    color: #e6e6e6;
     transform: rotate(90deg);
     display: block;
+  }
+  &.active {
+    color: map-get($colors, primary);
   }
   span {
     display: none;
@@ -145,6 +148,7 @@
     font-size: 55px;
     height: 45px;
     animation: moveToHeader .4s linear 1.8s forwards;
+    // font-weight: bold;
   }
   .txt {
     display: block;
@@ -163,7 +167,7 @@
     display: inline-block;
     color: map-get($colors, primary);
     opacity: 0;
-    font-size: 33px;
+    font-size: 52px;
     margin: 0 4.5px;
     animation: flash .6s ease-in-out .6s 2 forwards;
   }
