@@ -48,6 +48,7 @@ export default {
   mounted() {
     this.reactiveMess('all', this.todos);
     this.originTodos = this.todos;
+    this.toggleClear = this.$refs.inputTodo.toggle = this.toggle = this.todos.some(e => e.completed);
   },
   methods: {
     addTodo: function(e, id) {
@@ -96,6 +97,7 @@ export default {
         case 'clear':
           this.todos = this.originTodos = this.originTodos.filter((e) => !e.completed);
           this.filterTodo(this.currentFilter);
+          this.$refs.inputTodo.toggle = this.toggle = false;
           break;
         case 'toggle':
           this.toggle = !this.toggle;
