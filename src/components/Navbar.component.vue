@@ -1,5 +1,5 @@
 <template>
-  <nav class="page-nav">
+  <nav class="page-nav" role="navigation">
     <ul>
       <li :class="{ active: selected == 'all' }">
         <button @click="filter('all')">
