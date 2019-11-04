@@ -4,6 +4,8 @@ import VueRouter from 'vue-router'
 import Login from './components/auth/Login.component';
 import Register from './components/auth/Register.component';
 import Todo from './components/Todo.component';
+import './registerServiceWorker'
+
 
 Vue.use(VueRouter)
 
