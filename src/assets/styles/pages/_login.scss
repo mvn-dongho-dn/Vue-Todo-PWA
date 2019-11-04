@@ -1,0 +1,18 @@
+.login {
+  padding-top: 150px;
+  text-align: center;
+  height: 100vh;
+  width: 400px;
+  .form-login {
+    .form-buttom {
+      padding: 15px 0;
+      display: flex;
+      justify-content: space-between;
+    }
+    .register {
+      float: left;
+      cursor: pointer;
+      color: #F3C608;
+    }
+  }
+}

@@ -24,14 +24,14 @@ export default {
       this.$emit('toggle', 'toggle');
     },
     onNewTodo: function() {
-      this.$emit('add', this.newTodo, this.saveLocalNewId());
+      this.$emit('add', this.newTodo);
     },
-    saveLocalNewId: function() {
-      let getLastId = localStorage.getItem('lastTodoId');
-      getLastId ? +(getLastId)++ : getLastId = 1;
-      localStorage.setItem('lastTodoId', getLastId);
-      return getLastId;
-    }
+    // saveLocalNewId: function() {
+    //   let getLastId = localStorage.getItem('lastTodoId');
+    //   getLastId ? +(getLastId)++ : getLastId = 1;
+    //   localStorage.setItem('lastTodoId', getLastId);
+    //   return getLastId;
+    // }
   }
 }
 </script>

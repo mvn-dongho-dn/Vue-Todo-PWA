@@ -2,3 +2,12 @@ button {
   font-family: $font-body;
   outline: none;
 }
+
+.btn-submit {
+  width: 120px;
+  padding: 14px;
+  border: 0;
+  border-radius: 25px;
+  color: white;
+  background-image: linear-gradient(to right, #f3c608, #f1bb01, #efaf00, #eca400, #e99900);
+}
