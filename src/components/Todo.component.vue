@@ -1,10 +1,10 @@
 <template>
-   <div id="todo">
+  <div id="todo">
     <HeaderComp/>
     <main class="page-main">
       <InputTodoComp ref="inputTodo" @add="addTodo" @toggle="actionTodo"/>
       <div class="todo-counter">
-        2 item left
+        {{ todos.length }} item left
         <span v-if="toggleClear" @click="actionTodo('clear')">Clear completed</span>
       </div>
       <TodoListComp :todos="todos" />
@@ -21,12 +21,8 @@
   import TodoListComp from './TodoList.component';
   import NavbarComp from './Navbar.component';
   import MessageComp from './Message.component';
-  // import { todoLocalStorage } from '../core/functions/todo-storage.js';
   import { EMOJI } from '../core/functions/emoji';
   import db from '../firebase';
-  import firebase from 'firebase'
-
-  // const STORAGE_KEY = 'todos';
 
   export default {
     name: 'todo',
@@ -71,6 +67,7 @@
         })
       },
       addTodo: function(e) {
+        console.log(e);
         const value = e && e.trim();
         if (!e) {
           return
@@ -169,7 +166,6 @@
     watch: {
       todos: {
         handler: function(todos) {
-          // todoLocalStorage.set(STORAGE_KEY, todos)
           this.reactiveMess(this.currentFilter, this.todos);
           this.toggleClear = todos.some(e => e.completed);
           this.reactiveMess(this.currentFilter, todos);

@@ -24,11 +24,19 @@ const routes = [
   },
   {
     path: '/todo',
-    component: Todo
+    component: Todo,
+    beforeEnter: (to, from, next) => {
+      if (localStorage.getItem('token')) {
+        next()
+      } else {
+        next('/login')
+      }
+    }
   },
 ]
 
 const router = new VueRouter({
+  mode: 'history',
   routes
 })
 

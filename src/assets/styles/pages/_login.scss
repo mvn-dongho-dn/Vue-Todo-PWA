@@ -1,8 +1,7 @@
 .login {
-  padding-top: 150px;
+  padding-top: 120px;
   text-align: center;
   height: 100vh;
-  width: 400px;
   .form-login {
     .form-buttom {
       padding: 15px 0;
@@ -13,6 +12,25 @@
       float: left;
       cursor: pointer;
       color: #F3C608;
+    }
+    .text {
+      padding: 10px 0;
+    }
+    .list-social {
+      width: 200px;
+      margin: 15px auto 0;
+      display: flex;
+      justify-content: space-between;
+      .item {
+        cursor: pointer;
+      }
+    }
+  }
+  &-bottom {
+    padding-top: 50px;
+    line-height: 25px;
+    .register-link {
+      color: map-get($colors, primary)
     }
   }
 }

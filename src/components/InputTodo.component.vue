@@ -31,18 +31,16 @@ export default {
       this.$emit('toggle', 'toggle');
     },
     onNewTodo: function() {
-      this.$emit('add', this.newTodo);
       if (this.newTodo) {
         this.$emit('add', this.newTodo.trim());
-        // this.$emit('add', this.newTodo.trim(), this.saveLocalNewId());
       }
     },
-    // saveLocalNewId: function() {
-    //   let getLastId = localStorage.getItem('lastTodoId');
-    //   getLastId ? +(getLastId)++ : getLastId = 1;
-    //   localStorage.setItem('lastTodoId', getLastId);
-    //   return getLastId;
-    // }
+    saveLocalNewId: function() {
+      let getLastId = localStorage.getItem('lastTodoId');
+      getLastId ? +(getLastId)++ : getLastId = 1;
+      localStorage.setItem('lastTodoId', getLastId);
+      return getLastId;
+    }
   }
 }
 </script>

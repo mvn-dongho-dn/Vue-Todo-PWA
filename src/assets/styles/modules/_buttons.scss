@@ -4,10 +4,10 @@ button {
 }
 
 .btn-submit {
-  width: 120px;
-  padding: 14px;
+  width: 100%;
+  padding: 10px;
   border: 0;
-  border-radius: 25px;
+  border-radius: 10px;
   color: white;
-  background-image: linear-gradient(to right, #f3c608, #f1bb01, #efaf00, #eca400, #e99900);
+  background: map-get($colors, primary);
 }
