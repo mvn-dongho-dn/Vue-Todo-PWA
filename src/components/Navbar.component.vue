@@ -21,21 +21,21 @@
 </template>
 
 <script>
-export default {
-  name: 'navbar',
-  data() {
-    return {
-      selected: 'all'
-    }
-  },
-  methods: {
-    filter: function(type) {
-      this.$emit('filter', type);
-      this.selected = type;
+  export default {
+    name: 'navbar',
+    data() {
+      return {
+        selected: 'all'
+      }
     },
-    action: function(type) {
-      this.$emit('action', type);
+    methods: {
+      filter: function(type) {
+        this.$emit('filter', type);
+        this.selected = type;
+      },
+      action: function(type) {
+        this.$emit('action', type);
+      }
     }
   }
-}
 </script>

@@ -15,12 +15,12 @@ const routes = [
     redirect: '/todo'
   },
   {
-    path: '/login',
-    component: Login
-  },
-  {
     path: '/register',
     component: Register
+  },
+  {
+    path: '/login',
+    component: Login
   },
   {
     path: '/todo',

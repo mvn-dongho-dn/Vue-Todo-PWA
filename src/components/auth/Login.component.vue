@@ -37,6 +37,7 @@
       return {
         email: '',
         password: '',
+        token: '',
         router: new VueRouter()
       }
     },
@@ -46,9 +47,9 @@
         .then(() => {
           firebase.auth().currentUser.getIdToken()
           .then((idToken) => {
-            localStorage.setItem('token', idToken);
-            localStorage.setItem('userId', firebase.auth().currentUser.uid);
-            this.$router.replace('todo')
+            this.token = idToken;
+            this.setStorage();
+            this.$router.replace('todo');
           })
         })
         .catch((error) => {
@@ -64,8 +65,8 @@
       loginFb: function() {
         const provider = new firebase.auth.FacebookAuthProvider();
         firebase.auth().signInWithPopup(provider).then((result) => {
-          localStorage.setItem('token', result.credential.accessToken);
-          localStorage.setItem('userId', result.user.uid);
+          this.token = result.credential.accessToken;
+          this.setStorage();
           this.$router.replace('todo');
         }).catch(function(error) {
           console.log(error);
@@ -74,8 +75,8 @@
       loginGg: function() {
         const provider = new firebase.auth.GoogleAuthProvider();
         firebase.auth().signInWithPopup(provider).then((result) => {
-          localStorage.setItem('token', result.credential.accessToken);
-          localStorage.setItem('userId', result.user.uid);
+          this.token = result.credential.accessToken;
+          this.setStorage();
           this.$router.replace('todo');
         }).catch((error) => {
           console.log(error);
@@ -83,6 +84,11 @@
       },
       loginTt: function() {
         // TODO: login with twitter
+      },
+      setStorage: function() {
+        localStorage.setItem('token', this.token);
+        localStorage.setItem('userId', firebase.auth().currentUser.uid);
+        localStorage.setItem('photoURL', firebase.auth().currentUser.photoURL);
       }
     }
   }
