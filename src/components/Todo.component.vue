@@ -108,7 +108,7 @@
             filtered = this.originTodos;
             break;
           case 'active':
-            filtered = this.originTodos.filter((e) => { !e.completed});
+            filtered = this.originTodos.filter((e) => !e.completed);
             break;
           case 'completed':
             filtered = this.originTodos.filter((e) => e.completed);
