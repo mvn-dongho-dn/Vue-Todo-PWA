@@ -1,0 +1,27 @@
+button {
+  font-family: $font-body;
+  outline: none;
+  &:disabled {
+    opacity: .5;
+    pointer-events: none;
+  }
+}
+.btn-no-style {
+  background: none;
+  border: 0;
+}
+.btn-loading {
+  color: transparent !important;
+  position: relative;
+  &::after {
+    content: "";
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    background: url('~@/assets/images/loading-white.gif') no-repeat center;
+    background-size: contain;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+}

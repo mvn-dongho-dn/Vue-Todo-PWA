@@ -1,19 +1,44 @@
 <template>
   <nav class="page-nav" role="navigation">
-    <ul>
-      <li :class="{ active: selected == 'all' }">
-        <button @click="filter('all')">
-          <i class="icon-icon-36-clipboard-download"></i>All task
+    <ul class="nav-menu">
+      <li>
+        <button @click="logout">
+          <span class="icon">
+            <i class="icon-icon-36-clipboard-download"></i>
+          </span>
+          <span class="txt">Sign out</span>
         </button>
       </li>
-      <li :class="{ active: selected == 'active' }">
-        <button @click="filter('active')">
-          <i class="icon-icon-40-clipboard-list"></i>Active
+      <li>
+        <button @click="logout">
+          <span class="icon">
+            <i class="icon-icon-36-clipboard-download"></i>
+          </span>
+          <span class="txt">Sign out</span>
         </button>
       </li>
-      <li :class="{ active: selected == 'completed' }">
-        <button @click="filter('completed')">
-          <i class="icon-icon-38-clipboard-checked"></i>Completed
+      <li>
+        <button @click="logout">
+          <span class="icon">
+            <i class="icon-icon-36-clipboard-download"></i>
+          </span>
+          <span class="txt">Sign out</span>
+        </button>
+      </li>
+      <li>
+        <button @click="logout">
+          <span class="icon">
+            <i class="icon-icon-36-clipboard-download"></i>
+          </span>
+          <span class="txt">Sign out</span>
+        </button>
+      </li>
+      <li>
+        <button @click="logout">
+          <span class="icon">
+            <i class="icon-icon-36-clipboard-download"></i>
+          </span>
+          <span class="txt">Sign out</span>
         </button>
       </li>
     </ul>
@@ -21,21 +46,23 @@
 </template>
 
 <script>
-  export default {
-    name: 'navbar',
-    data() {
-      return {
-        selected: 'all'
-      }
-    },
-    methods: {
-      filter: function(type) {
-        this.$emit('filter', type);
-        this.selected = type;
-      },
-      action: function(type) {
-        this.$emit('action', type);
-      }
+import firebase from 'firebase';
+
+export default {
+  name: 'navbar',
+  data() {
+    return {
+      selected: 'all'
+    }
+  },
+  methods: {
+    logout: function() {
+      firebase.auth().signOut().then(() => {
+        localStorage.removeItem('token');
+        localStorage.removeItem('userId');
+        this.$router.replace('/auth/login');
+      });
     }
   }
+}
 </script>

@@ -1,0 +1,98 @@
+input {
+  font-family: $font-body;
+}
+::placeholder {
+  color: #ddd;
+}
+.checkbox-style {
+  cursor: pointer;
+  span {
+    width: 16px;
+    height: 16px;
+    border: 1px solid #333;
+    display: block;
+    border-radius: 3px;
+    transition: all .1s ease-in-out;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    &::before {
+      content: "";
+      width: 6px;
+      height: 6px;
+      background: #75c646;
+      border-radius: 50%;
+      transform: scale(0);
+      transition: all .4s;
+    }
+  }
+  input {
+    display: none;
+    &:checked {
+      + span {
+        border-color: map-get($colors, primary);
+        transform: rotate(45deg) !important;
+        &::before {
+          transform: scale(1);
+        }
+      }
+    }
+  }
+}
+.form-group {
+  position: relative;
+  margin-bottom: 23px;
+}
+.form-group label {
+  display: block;
+  text-transform: uppercase;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+}
+.form-group svg {
+  position: absolute;
+  width: 16px;
+  left: 0;
+  bottom: 9px;
+  color: #cbcbcb;
+}
+.form-group input {
+  border: 0;
+  border-bottom: 1px solid #f2f2f2;
+  width: 100%;
+  padding: 7px 0 10px 25px;
+  outline: none;
+  height: 32px;
+}
+.form-group .form-focus-line {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  width: 17px;
+  left: 0;
+  border-bottom: 1px solid map-get($colors, primary);
+  transition: all .4s;
+}
+.form-group input:focus + .form-focus-line {
+  width: 100%;
+}
+.buttons-set {
+  button {
+    background: #f2f2f2;
+    border: 0;
+    padding: 10px;
+    text-transform: uppercase;
+    font-weight: 700;
+    min-width: 140px;
+    letter-spacing: 0.05em;
+    cursor: pointer;
+    transition: all .3s;
+    width: 100%;
+    font-size: 14px;
+    &:hover {
+      background: #018301;
+      color: #fff;
+    }
+  }
+}

@@ -1,0 +1,40 @@
+.page-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  z-index: 12345;
+  width: calc(100% - 60px);
+  background: #fff;
+  transform: translateX(-100%);
+  box-shadow: -2px 2px 9px #f0f0f0 inset;
+  &.active {
+    display: block;
+    .nav-overlay {
+      opacity: 1;
+    }
+    .nav-menu {
+      transform: translateY(0);
+    }
+  }
+  .nav-menu {
+    li {
+      border-bottom: 1px solid #eee;
+    }
+    .icon {
+      font-size: 21px;
+      line-height: 0;
+      margin-right: 11px;
+    }
+    button,
+    a {
+      background: none;
+      border: 0;
+      padding: 14px;
+      display: flex;
+      align-items: center;
+      width: 100%;
+      cursor: pointer;
+    }
+  }
+}

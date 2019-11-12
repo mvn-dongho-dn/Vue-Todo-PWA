@@ -1,8 +1,9 @@
 <template>
   <div id="todo">
     <HeaderComp/>
+    <NavbarComp/>
     <main class="page-main">
-      <InputTodoComp ref="inputTodo" @add="addTodo" @toggle="actionTodo"/>
+      <InputTodoComp ref="inputTodo" @add="addTodo" @toggle="actionTodo" :loading="loading"/>
       <div class="todo-counter">
         {{ todos.length }} item left
         <span v-if="toggleClear" @click="actionTodo('clear')">Clear completed</span>
@@ -11,7 +12,8 @@
 
       <MessageComp :mess="message"/>
     </main>
-    <NavbarComp @filter="filterTodo" @action="actionTodo"/>
+    <FooterComp @filter="filterTodo" @action="actionTodo"/>
+    <ProfileComp :todos="todos"/>
   </div>
 </template>
 
@@ -20,7 +22,9 @@
   import InputTodoComp from './InputTodo.component';
   import TodoListComp from './TodoList.component';
   import NavbarComp from './Navbar.component';
+  import FooterComp from './Footer.component';
   import MessageComp from './Message.component';
+  import ProfileComp from './Profile.component';
   import { EMOJI } from '../core/functions/emoji';
   import db from '../firebase';
 
@@ -31,7 +35,9 @@
       NavbarComp,
       InputTodoComp,
       MessageComp,
-      TodoListComp
+      FooterComp,
+      TodoListComp,
+      ProfileComp
     },
     data() {
       return {
@@ -41,6 +47,7 @@
         message: {},
         toggle: false,
         toggleClear: false,
+        loading: false
       }
     },
     mounted() {
@@ -67,11 +74,11 @@
         })
       },
       addTodo: function(e) {
-        console.log(e);
         const value = e && e.trim();
         if (!e) {
           return
         }
+        this.loading = true;
         db.collection("todo").add({
           title: value,
           completed: false,
@@ -83,7 +90,7 @@
             title: value,
             completed: false
           });
-
+          this.loading = false;
           this.originTodos = this.todos;
           this.$refs.inputTodo.newTodo = '';
           this.reactiveMess('all', this.todos);
@@ -126,6 +133,7 @@
       actionTodo: function(type) {
         switch (type) {
           case 'clear':
+            this.loading = true;
             db.collection('todo')
             .where('completed', '==', true)
             .where('userId', '==', localStorage.getItem('userId'))
@@ -139,9 +147,11 @@
                 this.todos = this.originTodos = this.originTodos.filter((e) => !e.completed);
                 this.filterTodo(this.currentFilter);
               });
+              this.loading = false;
             })
             break;
           case 'toggle':
+            this.loading = true;
             db.collection('todo')
             .where('completed', '==', false)
             .where('userId', '==', localStorage.getItem('userId'))
@@ -158,6 +168,7 @@
                   return e;
                 });
               });
+              this.loading = false;
             })
             break;
         }

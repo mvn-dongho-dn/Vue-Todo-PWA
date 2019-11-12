@@ -1,0 +1,15 @@
+* {
+  box-sizing: border-box;
+}
+body {
+  font-family: $font-body;
+  transition: transform .3s;
+  color: #333;
+  &.show-sidebar-left {
+    transform: translateX(calc(100% - 60px));
+    overflow: hidden;
+  }
+}
+img {
+  max-width: 100%;
+}

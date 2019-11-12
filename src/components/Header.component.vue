@@ -1,54 +1,58 @@
 <template>
   <header class="page-header" role="banner">
-    <div class="header-action">
-      <img @click="togleSidebar()" class="icon-menu" src="~@/assets/images/menu.png" alt="icon-menu">
+    <button class="toggle-sidebar-left" @click="toggleSidebar()">
+      <span></span>
+    </button>
 
-      <h1 class="logo">T<span>o</span>d<span>o</span></h1>
-      <div class="flash-screen">
-        <div class="flash-inner">
-          <div class="txt"><i>T</i><span>o</span><i>d</i><span>o</span></div>
-        </div>
-      </div>
-
-      <div class="avatar">
-        <img v-bind:src="photoURL" alt="avatar">
+    <h1 class="logo">T<span>o</span>d<span>o</span></h1>
+    <div class="flash-screen">
+      <div class="flash-inner">
+        <div class="txt"><i>T</i><span>o</span><i>d</i><span>o</span></div>
       </div>
     </div>
-    <Sidebar :isPanelOpen="isPanelOpen" @closeSidebar="togleSidebar()">
-      <ul class="sidebar-panel-nav">
-        <li @click="logout()">logout</li>
-      </ul>
-    </Sidebar>
+    <div class="user-avatar" @click="openProfile">
+      <img v-if="userInfo.photoURL" :src="userInfo.photoURL" alt="">
+      <img v-else src="@/assets/images/avatar.png" alt="">
+    </div>
+    <div class="nav-overlay" @click="toggleSidebar()"></div>
   </header>
 </template>
 
 
 <script>
-import Sidebar from './Sidebar.component';
+const body = document.body;
 
 export default {
   name: 'header-comp',
-  components: {
-    Sidebar
-  },
   data() {
     return {
       mess: 'TODO',
       isPanelOpen: false,
-      photoURL: ''
+      photoURL: '',
+      userInfo: {}
     }
   },
   mounted() {
+    const getInfo = localStorage.getItem('user-info');
+    this.userInfo = getInfo ? JSON.parse(getInfo) : {};
     this.photoURL = localStorage.getItem('photoURL');
   },
   methods: {
-    togleSidebar: function() {
-      this.isPanelOpen = !this.isPanelOpen;
+    openProfile() {
+      document.body.classList.add('profile-open');
     },
     logout: function() {
       localStorage.removeItem('token');
       localStorage.removeItem('userId');
-       this.$router.replace('login')
+      this.$router.replace('/auth/login');
+    },
+    toggleSidebar() {
+      const navClass = 'show-sidebar-left';
+      if (body.classList.contains(navClass)) {
+        body.classList.remove(navClass);
+      } else {
+        body.classList.add(navClass);
+      }
     }
   }
 }
