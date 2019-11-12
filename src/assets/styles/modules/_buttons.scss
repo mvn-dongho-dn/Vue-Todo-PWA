@@ -2,3 +2,11 @@ button {
   font-family: $font-body;
   outline: none;
 }
+
+.btn-submit {
+  width: 100%;
+  padding: 10px;
+  border: 0;
+  color: white;
+  background: map-get($colors, primary);
+}

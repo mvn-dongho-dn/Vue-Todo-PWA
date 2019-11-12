@@ -32,7 +32,7 @@ export default {
     },
     onNewTodo: function() {
       if (this.newTodo) {
-        this.$emit('add', this.newTodo.trim(), this.saveLocalNewId());
+        this.$emit('add', this.newTodo.trim());
       }
     },
     saveLocalNewId: function() {
